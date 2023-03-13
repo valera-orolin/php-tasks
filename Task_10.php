@@ -11,7 +11,6 @@
     divideBy()
     multiplyBy()
     subtractBy()
-    getResult()
 */
 
 class MyCalculator {
@@ -24,6 +23,12 @@ class MyCalculator {
         $this->a = $a;
         $this->b = $b;
         $this->result = 0;
+    }
+
+    function __toString(): string {
+        $temp = $this->result;
+        $this->result = 0;
+        return $temp;
     }
 
     function add() {
@@ -65,13 +70,6 @@ class MyCalculator {
         $this->result /= $number;
         return $this;
     }
-
-    function getResult() {
-        $temp = $this->result;
-        $this->result = 0;
-        return $temp;
-    }
-
 }
 
 
@@ -82,7 +80,7 @@ class MyCalculator {
 */
 
 $calc = new MyCalculator(12, 6);
-echo '12 + 6 = ' . $calc->add()->getResult() . '</br>';
-echo '(12 + 6) / 9 = ' . $calc->add()->divideBy(9)->getResult();
+echo '12 + 6 = ' . $calc->add() . '</br>';
+echo '(12 + 6) / 9 = ' . $calc->add()->divideBy(9);
 
 ?>
